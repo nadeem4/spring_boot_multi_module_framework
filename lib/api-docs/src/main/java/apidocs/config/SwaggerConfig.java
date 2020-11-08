@@ -59,9 +59,9 @@ public class SwaggerConfig {
 				null,
 				new springfox.documentation.service
 						.Contact(
-								"CTR Backend Team",
+								"Backend Team",
 								"",
-								"Nadeem.khan@crowe.com"
+								"nadeem4.nk13@gmail.com"
 				),
 				null,
 				null,

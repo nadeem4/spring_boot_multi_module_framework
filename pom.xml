@@ -4,18 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
-		<module>application/workorder-service</module>
-		<module>application/organization-service</module>
-		<module>application/inbound-service</module>
-		<module>application/outbound-service</module>
-		<module>application/common-service</module>
 		<module>lib/logging</module>
 		<module>lib/security</module>
 		<module>lib/exception</module>
 		<module>backend-starter</module>
 		<module>lib/api-docs</module>
 		<module>lib/utility</module>
-		<module>api-gateway</module>
 		<module>lib/notification</module>
 		<module>lib/file-handler</module>
 	</modules>
@@ -25,17 +19,17 @@
 		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from utility.repository -->
 	</parent>
-	<groupId>com.copo</groupId>
-	<artifactId>copo-backend-parent</artifactId>
-	<version>0.9.3</version>
-	<name>Crowe Outside Processing Optimizer</name>
-	<description>Crowe Outside Processing Optimizer</description>
+	<groupId>com.app</groupId>
+	<artifactId>backend-parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Spring boot Multi Module Project</name>
+	<description>Spring Boot Multi Module Project</description>
 
 	<properties>
 		<java.version>11</java.version>
 		<azure.version>2.2.1</azure.version>
 		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-		<copo.version>0.9.3</copo.version>
+		<app.version>1.0.0-SNAPSHOT</app.version>
 		<springfox-swagger2.version>3.0.0</springfox-swagger2.version>
 		<sqlserver.version>7.4.1.jre8</sqlserver.version>
 		<jsonwebtoken.version>0.10.7</jsonwebtoken.version>
@@ -52,13 +46,6 @@
 		<mteric-collector.version>2.3.5</mteric-collector.version>
 	</properties>
 	
-	<developers>
-		<developer>
-			<id>CTR Dev</id>
-			<name>Crowe CTR Developers</name>
-			<organization>Crowe LLP</organization>
-		</developer>
-	</developers>
 
 	<dependencies>
 		

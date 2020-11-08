@@ -15,5 +15,5 @@ import java.lang.annotation.Target;
 @RestController
 @PreAuthorize ("isAuthenticated()")
 @RequestMapping ("/api/v1")
-public @interface COPOControllerV1 {
+public @interface ControllerV1 {
 }
