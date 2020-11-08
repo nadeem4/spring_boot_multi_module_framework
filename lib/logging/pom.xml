@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>copo-backend-parent</artifactId>
+		<groupId>com.copo</groupId>
+		<version>0.9.3</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	
+	<artifactId>logging</artifactId>
+	<packaging>jar</packaging>
+	
+	
+	<dependencies>
+		<!-- provide facility to send logs to application insight -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>applicationinsights-spring-boot-starter</artifactId>
+			<version>${ai-spring-boot-starter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>applicationinsights-logging-logback</artifactId>
+			<version>${ai-logging-logback.version}</version>
+		</dependency>
+		
+		<!-- helps in remodelling of logs -->
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>${logstash.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.skjolber.logback-logstash-syntax-highlighting-decorators</groupId>
+			<artifactId>logback-logstash-syntax-highlighting-decorators</artifactId>
+			<version>${syntax-highlighter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.fusesource.jansi</groupId>
+			<artifactId>jansi</artifactId>
+			<version>${jansi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.copo</groupId>
+			<artifactId>utility</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- collect metric and send it to azure monitor -->
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-spring-boot-metrics-starter</artifactId>
+			<version>${mteric-collector.version}</version>
+		</dependency>
+		
+		<!-- required for java version greater than 1.8-->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+	</dependencies>
+	
+
+</project>

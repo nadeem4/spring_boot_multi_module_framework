@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
+	<modules>
+		<module>application/workorder-service</module>
+		<module>application/organization-service</module>
+		<module>application/inbound-service</module>
+		<module>application/outbound-service</module>
+		<module>application/common-service</module>
+		<module>lib/logging</module>
+		<module>lib/security</module>
+		<module>lib/exception</module>
+		<module>backend-starter</module>
+		<module>lib/api-docs</module>
+		<module>lib/utility</module>
+		<module>api-gateway</module>
+		<module>lib/notification</module>
+		<module>lib/file-handler</module>
+	</modules>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.3.RELEASE</version>
+		<relativePath/> <!-- lookup parent from utility.repository -->
+	</parent>
+	<groupId>com.copo</groupId>
+	<artifactId>copo-backend-parent</artifactId>
+	<version>0.9.3</version>
+	<name>Crowe Outside Processing Optimizer</name>
+	<description>Crowe Outside Processing Optimizer</description>
+
+	<properties>
+		<java.version>11</java.version>
+		<azure.version>2.2.1</azure.version>
+		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+		<copo.version>0.9.3</copo.version>
+		<springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+		<sqlserver.version>7.4.1.jre8</sqlserver.version>
+		<jsonwebtoken.version>0.10.7</jsonwebtoken.version>
+		<unirest.version>3.3.00</unirest.version>
+		<maven.test.skip>true</maven.test.skip>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+		<ai-spring-boot-starter.version>2.6.2</ai-spring-boot-starter.version>
+		<jansi.version>1.11</jansi.version>
+		<logstash.version>6.4</logstash.version>
+		<ai-logging-logback.version>2.6.1</ai-logging-logback.version>
+		<syntax-highlighter.version>1.0.3</syntax-highlighter.version>
+		<mteric-collector.version>2.3.5</mteric-collector.version>
+	</properties>
+	
+	<developers>
+		<developer>
+			<id>CTR Dev</id>
+			<name>Crowe CTR Developers</name>
+			<organization>Crowe LLP</organization>
+		</developer>
+	</developers>
+
+	<dependencies>
+		
+		<!-- Spring boot starter dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		
+		<!-- provide facility to interact with underlying database -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>${sqlserver.version}</version>
+		</dependency>
+		
+		<!-- provide framework for testing -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.microsoft.azure</groupId>
+				<artifactId>azure-spring-boot-bom</artifactId>
+				<version>${azure.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+
+</project>

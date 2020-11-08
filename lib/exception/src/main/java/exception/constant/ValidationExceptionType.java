@@ -1,0 +1,11 @@
+package exception.constant;
+
+
+public enum ValidationExceptionType {
+	MISSING_FIELD_ERROR,
+	EMPTY_PROPERTY_ERROR,
+	NEGATIVE_NOT_ALLOWED_ERROR,
+	INVALID_LENGTH_ERROR,
+	INVALID_DATA_ERROR,
+	INVALID_REQUEST_BODY
+}

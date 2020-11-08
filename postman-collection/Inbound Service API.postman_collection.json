@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "266dfcc5-6d07-4c34-bb24-a97f96a4bbab",
+		"name": "Inbound Service API",
+		"description": "Helps to interact with Backend\n\nContact Support:\n Name: CTR Backend Team\n Email: Nadeem.khan@crowe.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/v1",
+			"item": [
+				{
+					"name": "create work order via integration",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"finishedMaterialLines\": [\n        {\n            \"erpFinMatSeq\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"estimatedQuantityUnit\": \"<string>\",\n                \"estimatedQuantityValue\": \"<double>\",\n                \"estimatedSkids\": \"<integer>\",\n                \"estimatedSumQuantityUnit\": \"<string>\",\n                \"estimatedSumQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"shippingInfo\": {\n                \"deliveryMode\": \"<string>\",\n                \"deliveryTerm\": \"<string>\",\n                \"requestedDeliveryDate\": \"<string>\",\n                \"shipToOrgId\": \"<integer>\"\n            },\n            \"specifications\": [\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                },\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                }\n            ]\n        },\n        {\n            \"erpFinMatSeq\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"estimatedQuantityUnit\": \"<string>\",\n                \"estimatedQuantityValue\": \"<double>\",\n                \"estimatedSkids\": \"<integer>\",\n                \"estimatedSumQuantityUnit\": \"<string>\",\n                \"estimatedSumQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"shippingInfo\": {\n                \"deliveryMode\": \"<string>\",\n                \"deliveryTerm\": \"<string>\",\n                \"requestedDeliveryDate\": \"<string>\",\n                \"shipToOrgId\": \"<integer>\"\n            },\n            \"specifications\": [\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                },\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                }\n            ]\n        }\n    ],\n    \"header\": {\n        \"erpEmailId\": \"<string>\",\n        \"erpProdOrderNumber\": \"<string>\",\n        \"inboundTransferOrderNumber\": \"<string>\",\n        \"outboundTransferOrderNumber\": \"<string>\",\n        \"productionOrderNumber\": \"<string>\",\n        \"scId\": \"<integer>\",\n        \"shippedDate\": \"<string>\"\n    },\n    \"rawMaterialLines\": [\n        {\n            \"erpId\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"allocatedQuantityUnit\": \"<string>\",\n                \"allocatedQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"operations\": [\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                },\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                }\n            ],\n            \"tags\": [\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                },\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                }\n            ]\n        },\n        {\n            \"erpId\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"allocatedQuantityUnit\": \"<string>\",\n                \"allocatedQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"operations\": [\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                },\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                }\n            ],\n            \"tags\": [\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                },\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/create-work-order",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"create-work-order"
+							]
+						},
+						"description": "Creates Work Order via Integration"
+					},
+					"response": [
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/create-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"create-work-order"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/create-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"create-work-order"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/create-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"create-work-order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"details\": [\n  {\n   \"action\": \"qui in\",\n   \"entity\": \"ullamco reprehenderit tempor consequat sit\",\n   \"entityId\": \"officia dolore minim eu\",\n   \"messages\": \"incididunt culpa amet in sit\"\n  },\n  {\n   \"action\": \"sunt dolor quis irure Duis\",\n   \"entity\": \"amet voluptate elit Lorem\",\n   \"entityId\": \"do\",\n   \"messages\": \"ad\"\n  }\n ],\n \"message\": \"eu minim officia dolore\",\n \"requestId\": \"in enim ad culpa\",\n \"status\": \"REQUEST_ENTITY_TOO_LARGE\",\n \"timestamp\": \"dd-MM-yyyy hh:mm:ss Z\"\n}"
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/create-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"create-work-order"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/create-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"create-work-order"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "edit work order via integration",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"finishedMaterialLines\": [\n        {\n            \"erpFinMatSeq\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"estimatedQuantityUnit\": \"<string>\",\n                \"estimatedQuantityValue\": \"<double>\",\n                \"estimatedSkids\": \"<integer>\",\n                \"estimatedSumQuantityUnit\": \"<string>\",\n                \"estimatedSumQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"shippingInfo\": {\n                \"deliveryMode\": \"<string>\",\n                \"deliveryTerm\": \"<string>\",\n                \"requestedDeliveryDate\": \"<string>\",\n                \"shipToOrgId\": \"<integer>\"\n            },\n            \"specifications\": [\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                },\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                }\n            ]\n        },\n        {\n            \"erpFinMatSeq\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"estimatedQuantityUnit\": \"<string>\",\n                \"estimatedQuantityValue\": \"<double>\",\n                \"estimatedSkids\": \"<integer>\",\n                \"estimatedSumQuantityUnit\": \"<string>\",\n                \"estimatedSumQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"shippingInfo\": {\n                \"deliveryMode\": \"<string>\",\n                \"deliveryTerm\": \"<string>\",\n                \"requestedDeliveryDate\": \"<string>\",\n                \"shipToOrgId\": \"<integer>\"\n            },\n            \"specifications\": [\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                },\n                {\n                    \"code\": \"<string>\",\n                    \"toleranceCode\": \"<string>\",\n                    \"value\": \"<double>\"\n                }\n            ]\n        }\n    ],\n    \"header\": {\n        \"erpEmailId\": \"<string>\",\n        \"erpProdOrderNumber\": \"<string>\",\n        \"inboundTransferOrderNumber\": \"<string>\",\n        \"outboundTransferOrderNumber\": \"<string>\",\n        \"productionOrderNumber\": \"<string>\",\n        \"scId\": \"<integer>\",\n        \"shippedDate\": \"<string>\"\n    },\n    \"rawMaterialLines\": [\n        {\n            \"erpId\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"allocatedQuantityUnit\": \"<string>\",\n                \"allocatedQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"operations\": [\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                },\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                }\n            ],\n            \"tags\": [\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                },\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                }\n            ]\n        },\n        {\n            \"erpId\": \"<string>\",\n            \"itemDescription\": \"<string>\",\n            \"itemDimension\": {\n                \"allocatedQuantityUnit\": \"<string>\",\n                \"allocatedQuantityValue\": \"<double>\",\n                \"lengthUnit\": \"<string>\",\n                \"lengthValue\": \"<double>\",\n                \"widthUnit\": \"<string>\",\n                \"widthValue\": \"<double>\"\n            },\n            \"itemNumber\": \"<string>\",\n            \"operations\": [\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                },\n                {\n                    \"chargeCodes\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"includedInTotalPrice\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"pricingUnit\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"erpPurchOrderNumber\": \"<string>\",\n                    \"erpVendNumber\": \"<string>\",\n                    \"opId\": \"<integer>\",\n                    \"operation\": \"<string>\",\n                    \"operationDescription\": \"<string>\",\n                    \"operationNumber\": \"<integer>\",\n                    \"pricingUnit\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"sendAsRFQ\": \"<integer>\",\n                    \"totalAmount\": \"<double>\",\n                    \"totalPrice\": \"<double>\",\n                    \"unit\": \"<string>\",\n                    \"unitPrice\": \"<double>\"\n                }\n            ],\n            \"tags\": [\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                },\n                {\n                    \"heatNumber\": \"<string>\",\n                    \"quantity\": \"<double>\",\n                    \"specifications\": [\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        },\n                        {\n                            \"code\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            },\n                            \"value\": {\n                                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                            }\n                        }\n                    ],\n                    \"tagNumber\": \"<string>\",\n                    \"unit\": \"<string>\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/edit-work-order",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"edit-work-order"
+							]
+						},
+						"description": "edit Work Order via Integration"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/edit-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"edit-work-order"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/edit-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"edit-work-order"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/edit-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"edit-work-order"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/edit-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"edit-work-order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"details\": [\n  {\n   \"action\": \"cupidatat ea eu enim\",\n   \"entity\": \"dolore Duis\",\n   \"entityId\": \"laboris qui labore\",\n   \"messages\": \"eiusmod exercitation Lorem\"\n  },\n  {\n   \"action\": \"eu Ut labore ea\",\n   \"entity\": \"in ipsum\",\n   \"entityId\": \"fugiat aute nisi ad irure\",\n   \"messages\": \"ad Lorem magna\"\n  }\n ],\n \"message\": \"enim incididu\",\n \"requestId\": \"nulla ut\",\n \"status\": \"RESET_CONTENT\",\n \"timestamp\": \"dd-MM-yyyy hh:mm:ss Z\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: oauth2",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/edit-work-order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"edit-work-order"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "af5d59a4-7814-4398-9aae-a2baf3023092",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bb96da7c-adef-4403-a7da-db508b1d104f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3da1ef24-556d-4d9d-9b9c-3b732ac17cd8",
+			"key": "baseUrl",
+			"value": "localhost:8080"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
