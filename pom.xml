@@ -12,7 +12,8 @@
 		<module>lib/utility</module>
 		<module>lib/notification</module>
 		<module>lib/file-handler</module>
-	</modules>
+        <module>application/sample-service</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -103,6 +104,12 @@
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
 			<version>${sqlserver.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		
 		<!-- provide framework for testing -->
