@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <fieldNames>
+                <levelValue>[ignore]</levelValue>
+                <version>[ignore]</version>
+            </fieldNames>
+
+            <jsonGeneratorDecorator class="com.github.skjolber.decorators.SyntaxHighlightingDecorator"/>
+        </encoder>
+    </appender>
+    <root level="debug">
+        <appender-ref ref="jsonConsoleAppender"/>
+    </root>
+</configuration>
