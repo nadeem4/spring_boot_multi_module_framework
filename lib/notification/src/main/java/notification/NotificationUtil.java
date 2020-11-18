@@ -25,16 +25,17 @@ import java.util.List;
 
 @Component
 public class NotificationUtil {
-	
-	private static final String HUB_NAME = "WorkOrder";
+
+	@Value("${app.notification.signal-r.hub-name}")
+	private String HUB_NAME;
 	
 	@Value("${app.url}")
 	private String url;
 	
-	@Value("${app.signalR.name}")
+	@Value("${app.notification.signal-r.name}")
 	private String signalRName;
 	
-	@Value("${app.signalR.key}")
+	@Value("${app.notification.signal-r.key}")
 	private String signalRServiceKey;
 	
 	@Autowired

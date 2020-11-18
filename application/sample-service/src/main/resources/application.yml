@@ -28,6 +28,8 @@ server:
 
 app:
   version: 1.0.0
+  security:
+    enabled: true
   swagger:
     enable-auth: false
     title: Sample Service

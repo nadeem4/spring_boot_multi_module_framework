@@ -41,15 +41,15 @@ public class FileUtil {
 	@Value ("${azure.storage.container-name}")
 	private String containerName;
 	
-	public URI uploadFile( MultipartFile file, String productionOrderNumber ) {
+	public URI uploadFile( MultipartFile file, String blobName ) {
 		String storageConnectionString = "DefaultEndpointsProtocol=https;" + "AccountName=" + accountName + ";"
 				+ "AccountKey=" + accountKey;
 		try {
 			CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 			CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
-			final CloudBlobContainer container = blobClient.getContainerReference(productionOrderNumber.toLowerCase());
+			final CloudBlobContainer container = blobClient.getContainerReference(blobName.toLowerCase());
 			container.createIfNotExists();
-			CloudBlockBlob blob = container.getBlockBlobReference(file.getOriginalFilename());
+			CloudBlockBlob blob = container.getBlockBlobReference(blobName);
 			blob.upload(file.getInputStream(), file.getSize());
 			return blob.getUri();
 		} catch (StorageException e) {
@@ -66,7 +66,7 @@ public class FileUtil {
 		
 	}
 	
-	public void deleteBlob( String url, String productionOrderNumber ) {
+	public void deleteBlob( String url, String blobName ) {
 		String storageConnectionString = "DefaultEndpointsProtocol=https;" + "AccountName=" + accountName + ";"
 				+ "AccountKey=" + accountKey;
 		String fileId = url.substring(url.lastIndexOf('/') + 1);
@@ -78,7 +78,7 @@ public class FileUtil {
 			
 			CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 			
-			final CloudBlobContainer container = blobClient.getContainerReference(productionOrderNumber.toLowerCase());
+			final CloudBlobContainer container = blobClient.getContainerReference(blobName.toLowerCase());
 			
 			CloudBlockBlob blob = container.getBlockBlobReference(fileId);
 			
@@ -90,7 +90,7 @@ public class FileUtil {
 	}
 	
 
-	public ResponseEntity<Resource> downloadBlob( String productionOrderNumber, String url ) {
+	public ResponseEntity<Resource> downloadBlob( String blobName, String url ) {
 		String storageConnectionString = "DefaultEndpointsProtocol=https;" + "AccountName=" + accountName + ";"
 				+ "AccountKey=" + accountKey;
 		
@@ -112,7 +112,7 @@ public class FileUtil {
 		CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 		final CloudBlobContainer container;
 		try {
-			container = blobClient.getContainerReference(productionOrderNumber);
+			container = blobClient.getContainerReference(blobName);
 			CloudBlockBlob blob = container.getBlockBlobReference(fileName);
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 			blob.download(outputStream);
