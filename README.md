@@ -38,7 +38,7 @@ Out of the box logging
 ![swagger ui](./assets/images/json_logs.PNG)
 ### security
 
-Enable swagger by only adding **@EnableSecurity** annotation on Main Class.
+Enable security by only adding **@EnableSecurity** annotation on Main Class.
 
 ``` JAVA
 package sample_service;
