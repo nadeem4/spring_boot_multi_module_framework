@@ -51,7 +51,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	private static final String NULL_VALUE_RECEIVED = "Null Value Received";
 	private static final String ACCESS_DENIED = "Access denied";
 	private static final String REQUEST_ID = "request_id";
-	private static  final String VALIDATION_ERROR = "Validation Errors";
+	private static final String VALIDATION_ERROR = "Validation Errors";
 	private static final String MALFORMED_REQUEST = "Malformed JSON request";
 	private static final String MALFORMED_RESPONSE = "Malformed response";
 	

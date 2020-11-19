@@ -36,6 +36,12 @@ app:
     desc: Helps to interact with Backend
     version: v1
     path-mapping: /
+    contact:
+      name: Backend Team
+      email: test@test.com
+      url: ""
+    license: null
+    license-uri: null
 
 azure:
   application-insights:

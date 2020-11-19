@@ -40,7 +40,13 @@ public class FileUtil {
 	
 	@Value ("${azure.storage.container-name}")
 	private String containerName;
-	
+
+	/**
+	 *
+	 * @param file
+	 * @param blobName
+	 * @return
+	 */
 	public URI uploadFile( MultipartFile file, String blobName ) {
 		String storageConnectionString = "DefaultEndpointsProtocol=https;" + "AccountName=" + accountName + ";"
 				+ "AccountKey=" + accountKey;
@@ -65,7 +71,12 @@ public class FileUtil {
 		}
 		
 	}
-	
+
+	/**
+	 *
+	 * @param url
+	 * @param blobName
+	 */
 	public void deleteBlob( String url, String blobName ) {
 		String storageConnectionString = "DefaultEndpointsProtocol=https;" + "AccountName=" + accountName + ";"
 				+ "AccountKey=" + accountKey;
@@ -88,9 +99,14 @@ public class FileUtil {
 			throw new FileHandlingException(fileId, OperationType.DELETE.getValues(), e.getLocalizedMessage());
 		}
 	}
-	
 
-	public ResponseEntity<Resource> downloadBlob( String blobName, String url ) {
+	/**
+	 *
+	 * @param blobName
+	 * @param url
+	 * @return
+	 */
+	public ResponseEntity<Resource> downloadBlob( String url, String blobName ) {
 		String storageConnectionString = "DefaultEndpointsProtocol=https;" + "AccountName=" + accountName + ";"
 				+ "AccountKey=" + accountKey;
 		

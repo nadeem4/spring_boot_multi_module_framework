@@ -24,16 +24,16 @@ import static org.hibernate.validator.internal.util.CollectionHelper.newArrayLis
 @Configuration
 public class SwaggerConfig {
 	
-	@Value ("${app.oauth.client-id:}")
+	@Value ("${app.swagger.oauth.client-id:}")
 	private String clientId;
 	
-	@Value("${app.oauth.client-key:}")
+	@Value("${app.swagger.oauth.client-key:}")
 	private String clientSecret;
 	
-	@Value("${app.oauth.login-endpoint:}")
+	@Value("${app.swagger.oauth.login-endpoint:}")
 	private String loginEndpointUrl;
 	
-	@Value("${app.oauth.resource:}")
+	@Value("${app.swagger.oauth.resource:}")
 	private String resource;
 	
 	@Value("${app.swagger.enable-auth:false}")
@@ -50,6 +50,21 @@ public class SwaggerConfig {
 	
 	@Value("${app.swagger.path-mapping}")
 	private String pathMapping;
+
+	@Value("${app.swagger.contact.name:Backend Team}")
+	private String contactName;
+
+	@Value("${app.swagger.contact.email:}")
+	private String contactEmail;
+
+	@Value("${app.swagger.contact.url:}")
+	private String companyUrl;
+
+	@Value("${app.swagger.license:null}")
+	private String license;
+
+	@Value("${app.swagger.license-uri:null}")
+	private String licenseUrl;
 	
 	private ApiInfo apiDetails() {
 		return new ApiInfo(
@@ -57,14 +72,13 @@ public class SwaggerConfig {
 				desc,
 				version,
 				null,
-				new springfox.documentation.service
-						.Contact(
-								"Backend Team",
-								"",
-								"nadeem4.nk13@gmail.com"
+				new springfox.documentation.service.Contact(
+						contactName,
+						companyUrl,
+						contactEmail
 				),
-				null,
-				null,
+				license,
+				licenseUrl,
 				Collections.emptyList()
 		);
 	}

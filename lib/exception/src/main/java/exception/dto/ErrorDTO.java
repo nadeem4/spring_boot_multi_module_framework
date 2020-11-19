@@ -20,7 +20,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 public class ErrorDTO {
-	
+
+
 	private HttpStatus status;
 	
 	private String message;
@@ -33,7 +34,12 @@ public class ErrorDTO {
 	private List<SubErrorDTO> detailMessage;
 	
 	private String debugMsg;
-	
+
+	/**
+	 *
+	 * @param status
+	 * @param message
+	 */
 	public ErrorDTO( HttpStatus status, String message) {
 		this.status = status;
 		this.requestId = (String) MDC.get("request_id");
@@ -41,18 +47,33 @@ public class ErrorDTO {
 		this.message = message;
 		this.timestamp = new Date();
 	}
-	
-	
+
+	/**
+	 *
+	 * @param fieldErrors
+	 */
 	public void addValidationErrors( List<FieldError> fieldErrors ) {
 		fieldErrors.forEach(this::addValidationError);
 	}
-	
+
+	/**
+	 *
+	 * @param actionErrorDTOS
+	 */
 	public void addMultiActionFailedErrors( List<MultipleActionErrorDTO> actionErrorDTOS) { actionErrorDTOS.forEach(this::addMultiError);}
-	
+
+	/**
+	 *
+	 * @param messages
+	 */
 	public void addAuthError( String messages) {
 		addSubError(new AuthErrorDTO(message));
 	}
-	
+
+	/**
+	 *
+	 * @param fieldError
+	 */
 	private void addValidationError( FieldError fieldError ) {
 		this.addValidationError(
 				fieldError.getObjectName(),
@@ -60,7 +81,11 @@ public class ErrorDTO {
 				fieldError.getRejectedValue(),
 				fieldError.getDefaultMessage());
 	}
-	
+
+	/**
+	 *
+	 * @param actionErrorDTO
+	 */
 	private void addMultiError( MultipleActionErrorDTO actionErrorDTO) {
 		this.addMultiError(
 				actionErrorDTO.getEntity(),
@@ -69,38 +94,77 @@ public class ErrorDTO {
 				actionErrorDTO.getRemedy()
 		);
 	}
-	
+
+	/**
+	 *
+	 * @param object
+	 * @param field
+	 * @param rejectedValue
+	 * @param message
+	 */
 	private void addValidationError( String object, String field, Object rejectedValue, String message ) {
 		addSubError(new ValidationErrorDTO(object, field, rejectedValue, message));
 	}
-	
+
+	/**
+	 *
+	 * @param entity
+	 * @param entityId
+	 * @param message
+	 * @param remedy
+	 */
 	private void addMultiError( String entity, String entityId, String message, String remedy) { addSubError(new MultipleActionErrorDTO( entity, entityId, message, remedy));}
-	
+
+	/**
+	 *
+	 * @param subError
+	 */
 	private void addSubError( SubErrorDTO subError ) {
 		if (detailMessage == null) {
 			detailMessage = new ArrayList<>();
 		}
 		detailMessage.add(subError);
 	}
-	
+
+	/**
+	 *
+	 * @param globalErrors
+	 */
 	public void addValidationError( List<ObjectError> globalErrors ) {
 		globalErrors.forEach(this::addValidationError);
 	}
-	
+
+	/**
+	 *
+	 * @param objectError
+	 */
 	private void addValidationError( ObjectError objectError ) {
 		this.addValidationError(
 				objectError.getObjectName(),
 				objectError.getDefaultMessage());
 	}
-	
+
+	/**
+	 *
+	 * @param object
+	 * @param message
+	 */
 	private void addValidationError( String object, String message ) {
 		addSubError(new ValidationErrorDTO(object, message));
 	}
-	
+
+	/**
+	 *
+	 * @param constraintViolations
+	 */
 	public void addValidationErrors( Set<ConstraintViolation<?>> constraintViolations ) {
 		constraintViolations.forEach(this::addValidationError);
 	}
-	
+
+	/**
+	 *
+	 * @param cv
+	 */
 	private void addValidationError( ConstraintViolation<?> cv ) {
 		this.addValidationError(
 				cv.getRootBeanClass().getSimpleName(),

@@ -28,6 +28,11 @@
             <artifactId>utility</artifactId>
             <version>${project.version}</version>
         </dependency>
+       <!-- <dependency>
+            <groupId>com.app</groupId>
+            <artifactId>file-handler</artifactId>
+            <version>${project.version}</version>
+        </dependency>-->
     </dependencies>
 
     <build>
