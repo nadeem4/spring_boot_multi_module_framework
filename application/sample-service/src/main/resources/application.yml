@@ -43,9 +43,6 @@ app:
     license: null
     license-uri: null
 
-azure:
-  application-insights:
-    enabled: false
 
 
 

@@ -21,7 +21,7 @@ Add below dependency to pom.xml
   </dependency>
 ```
 
-Add below content to application.yml file modify the default value swagger variables
+Add below content to application.yml file, to modify the default value swagger variables
 
 ```yaml
 app:
@@ -47,7 +47,7 @@ app:
 
 Enable swagger by only adding **@EnableDocs** annotation on Main Class.
 
-``` JAVA
+```JAVA
 package sample_service;
 
 import apidocs.annotations.EnableDocs;
@@ -204,9 +204,6 @@ __*Custom Exception*__
 
 ### logging
 
-Out of the box logging
-
-
 > It is already a part of backend starter
 
 ```xml
@@ -225,6 +222,69 @@ Out of the box logging
     <artifactId>logging</artifactId>
     <version>${project.version}</version>
   </dependency>
+```
+
+Out of the box logging for Repository, Service, Controller and Components, once below dependency added to pom.xml, and for all other functions of classes use **@Loggable** annotation.
+
+```JAVA
+package sample_service.dto.mapper;
+
+import logging.annotations.Loggable;
+import sample_service.dto.model.AppModelDTO;
+import sample_service.model.AppModel;
+
+public class AppModelMapper {
+
+    @Loggable
+    public AppModel convertToModel(AppModelDTO modelDTO) {
+        AppModel model = new AppModel();
+        model.setId(modelDTO.getId());
+        model.setName(modelDTO.getName());
+        return model;
+    }
+}
+
+```
+
+**@Loggable** has 4 optional parameters, that can set, if want to log some different messages.
+
+```JAVA
+package sample_service.dto.mapper;
+
+import logging.annotations.Loggable;
+import sample_service.dto.model.AppModelDTO;
+import sample_service.model.AppModel;
+
+public class AppModelMapper {
+
+    @Loggable(valueAfter = "Value After", valueAfterReturning = "Value After Returning", valueAround = "Value Around", valueBefore = "Value Before")
+    public AppModel convertToModel(AppModelDTO modelDTO) {
+        AppModel model = new AppModel();
+        model.setId(modelDTO.getId());
+        model.setName(modelDTO.getName());
+        return model;
+    }
+}
+
+```
+
+It will be capturing following properties:
+- __class_name__: Name of the class to which functions belong.
+- __method_name__: Name of the method which is getting executed.
+- __parameters__: Parameters of function.
+- __execution_time_in_ms__: Time take by a function.
+- __microservice__: Name of the microservice.
+- __request_id__: Unique Id with every request, that will also help tracing logs in Application Insight, if used.
+- __version__:  Microservice version.
+- __message__:  When function is starting -> **FUNCTIONNAME is started.**; When function is completed -> **FUNCTIONNAME is completed.**; In case of error it will contain error message.
+
+In order to send logs to Application Insight, add below content to application.yml
+
+```yaml
+azure:
+  application-insights:
+    instrumentation-key: ${appinsight-instrumentation-key}
+    enabled: true
 ```
 
 ![swagger ui](./assets/images/json_logs.PNG)
@@ -280,7 +340,7 @@ spring:
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
 ```
-``` JAVA
+```JAVA
 package sample_service;
 
 import apidocs.annotations.EnableDocs;

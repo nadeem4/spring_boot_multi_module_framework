@@ -1,0 +1,24 @@
+azure:
+  application-insights:
+    enabled: false
+    quick-pulse.enabled: true
+    heart-beat:
+      enabled: true
+      heart-beat-interval: 900
+    jmx:
+      jmx-counters[0]: java.lang:type=ClassLoading/LoadedClassCount/Current Loaded Class Count
+      jmx-counters[1]: java.lang:type=Memory/HeapMemoryUsage.init/Initial Heap Memory Usage/Composite
+      jmx-counters[2]: java.lang:name=PS MarkSweep,type=GarbageCollector/CollectionTime/GC MarkSweep Time
+
+    default-modules:
+      ProcessPerformanceCountersModule.enabled: true
+      JvmPerformanceCountersModule.enabled: true
+      WebRequestTrackingTelemetryModule.enabled: true
+      WebSessionTrackingTelemetryModule.enabled: true
+      WebUserTrackingTelemetryModule.enabled: true
+      WebPerformanceCounterModule.enabled: true
+      WebOperationIdTelemetryInitializer.enabled: true
+      WebOperationNameTelemetryInitializer.enabled: true
+      WebSessionTelemetryInitializer.enabled: true
+      WebUserTelemetryInitializer.enabled: true
+      WebUserAgentTelemetryInitializer.enabled: true

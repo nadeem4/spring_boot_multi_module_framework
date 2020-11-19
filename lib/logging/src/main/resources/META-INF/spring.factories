@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   logging.aspects.LoggableControllerAspect,\
   logging.aspects.LoggableRepositoryAspect,\
+  logging.aspects.LoggableComponentAspect,\
   logging.aspects.LoggableServiceAspect
