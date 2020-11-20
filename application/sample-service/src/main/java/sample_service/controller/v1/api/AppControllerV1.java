@@ -14,6 +14,7 @@ import utility.annotations.ControllerV1;
 import utility.constant.ActionType;
 import utility.constant.EntityType;
 import utility.constant.Messages;
+import utility.custom_data_type.ValidList;
 import utility.dto.ResponseDTO;
 
 import javax.validation.Valid;
@@ -35,6 +36,15 @@ public class AppControllerV1 {
         service.saveUser(new AppDTOMapper().convertToDTO(request));
         return new ResponseEntity( ResponseDTO.setResponseDTO(
                 Messages.setMessage(EntityType.USER, ActionType.CREATED, String.valueOf(request.getId()))),
+                HttpStatus.CREATED
+        );
+    }
+
+    @PostMapping(path = "/user")
+    public ResponseEntity<ResponseDTO> setUsersDetail(@Valid @RequestBody ValidList<AppRequest> request) {
+
+        return new ResponseEntity( ResponseDTO.setResponseDTO(
+                Messages.setMessage(EntityType.USER, ActionType.CREATED, "")),
                 HttpStatus.CREATED
         );
     }

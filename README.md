@@ -3,13 +3,31 @@
 This project aims to help the developer to start with spring boot multi-module project quickly. Logging, Exception handling, security are enabled by default.
 As of now logging and security module are strictly tied to Microsoft azure. All logs and exceptions are continuously tracked in Microsoft Application Insight.
 
+Anyone can take this skeleton, and can start developing Microservice with Spring Boot in no time, since they majorly need to focus on business logic. This project handles major cross-cutting concerns, and these are available under [lib](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib) folder. 
+> Add your Microservice under **application** folder. I have added one [sample-service](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/application/sample-service) under application folder, that can used as a reference.
+
 ## LIBRARIES
-- [api-docs](#api-doc)
-- [file-handler](#file-handler)
-- [exception](#exception)
-- [logging](#logging)
-- [security](#security)
-- [utility](#utility)
+- *api-docs*
+    - [documentation](#api-doc) 
+    - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/api-docs)
+- *file-handler*
+    - [documentation](#file-handler)
+    - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/file-handler)
+- *exception*
+    - [documentation](#exception)
+    - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/exception)
+- *logging*
+    - [documentation](#logging)
+    - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/logging)
+- *security*
+    - [documentation]((#security))
+    - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/security)
+- *utility*
+    - [documentation](#utility)
+    - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/utility)
+
+
+## How to create Microservice.
 
 ### api-docs
 Add below dependency to pom.xml
@@ -274,9 +292,14 @@ It will be capturing following properties:
 - __parameters__: Parameters of function.
 - __execution_time_in_ms__: Time take by a function.
 - __microservice__: Name of the microservice.
-- __request_id__: Unique Id with every request, that will also help tracing logs in Application Insight, if used.
+- __request_id__: Unique Id with every request, that will also help to trace logs in Application Insight, if used.
 - __version__:  Microservice version.
-- __message__:  When function is starting -> **FUNCTIONNAME is started.**; When function is completed -> **FUNCTIONNAME is completed.**; In case of error it will contain error message.
+- __message__:  
+   - When function is starting: **FUNCTIONNAME function started.**.
+   - When function complete: **FUNCTIONNAME function completed.**. 
+   - In case of error it will contain error message.
+   - When Controller starts: **FUNCTIONNAME event started.**.
+   - When Controller completes: **FUNCTIONNAME event completed.**.
 
 In order to send logs to Application Insight, add below content to application.yml
 
@@ -366,3 +389,51 @@ Add below dependency to pom.xml, in order to add utility module
     <version>${project.version}</version>
   </dependency>
 ```
+
+It has few important component:
+
+- __ValidList:__ Use this when you are adding any validators to an element of List.
+```JAVA
+package sample_service.controller.v1.api;
+
+import utility.annotations.ControllerV1;
+
+@ControllerV1
+public class AppController {
+
+  @PostMapping(path = "/user")
+    public ResponseEntity<ResponseDTO> setUsersDetail(@Valid @RequestBody ValidList<AppRequest> request) {
+    
+        return new ResponseEntity( ResponseDTO.setResponseDTO(
+                Messages.setMessage(EntityType.USER, ActionType.CREATED, "")),
+                HttpStatus.CREATED
+        );
+    }}
+```
+- __ResponseDTO:__ Use this DTO, for returning response to Users, for POST, PUT, PATCH, DELETE actions. It has a static  method  **setResponseDTO** that can be used, to set the message in response, other fields will be set by default.
+    - status: HttpStatus (This will be set to CREATED by default)
+    - message: String ( Use **setResponseDTO** method to set this value, this a static method. **ResponseDTO.setResponseDTO( Messages.setMessage(EntityType.USER, ActionType.CREATED, ""))**).                                                                                                      
+    - timestamp: Date (This will set to current timestamp by default. It uses __"dd-MM-yyyy hh:mm:ss Z"__ format).
+    - requestId: String ( This will be set by default to unique value for every request. e.g. **123e4567-e89b-12d3-a456-556642440000**
+)
+    - detailMessage: List
+
+```JAVA
+package sample_service.controller.v1.api;
+
+import utility.annotations.ControllerV1;
+
+@ControllerV1
+public class AppController {
+
+  @PostMapping(path = "/user")
+    public ResponseEntity<ResponseDTO> setUsersDetail(@Valid @RequestBody ValidList<AppRequest> request) {
+    
+        return new ResponseEntity( ResponseDTO.setResponseDTO(
+                Messages.setMessage(EntityType.USER, ActionType.CREATED, "")),
+                HttpStatus.CREATED
+        );
+    }}
+```
+
+
