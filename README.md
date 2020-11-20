@@ -29,7 +29,7 @@ Anyone can take this skeleton, and can start developing Microservice with Spring
 
 ## How to create Microservice.
 
-### api-docs
+## api-docs
 Add below dependency to pom.xml
 ```xml
  <dependency>
@@ -81,7 +81,9 @@ public class Application {
 ```
 
 ![swagger ui](./assets/images/swagger_ui.PNG)
-### file-handler
+
+
+## file-handler
 Exceptions will be automatically handled by Exception Module
 
 Add below dependency to pom.xml
@@ -158,7 +160,7 @@ public class FileHandler {
    
 ```
 
-### exception
+## exception
 
 > It is already a part of backend starter
 
@@ -220,7 +222,7 @@ __*Custom Exception*__
 
 
 
-### logging
+## logging
 
 > It is already a part of backend starter
 
@@ -311,7 +313,8 @@ azure:
 ```
 
 ![swagger ui](./assets/images/json_logs.PNG)
-### security
+
+## security
 
 *__As of now it only supports v1 token.__*
 
@@ -379,7 +382,7 @@ public class Application {
 }
 
 ```
-### utility
+## utility
 
 Add below dependency to pom.xml, in order to add utility module
 ```xml
