@@ -51,7 +51,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	private static final String NULL_VALUE_RECEIVED = "Null Value Received";
 	private static final String ACCESS_DENIED = "Access denied";
 	private static final String REQUEST_ID = "request_id";
-	private static final String VALIDATION_ERROR = "Validation Errors";
+	private static  final String VALIDATION_ERROR = "Validation Errors";
 	private static final String MALFORMED_REQUEST = "Malformed JSON request";
 	private static final String MALFORMED_RESPONSE = "Malformed response";
 	
@@ -331,7 +331,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 			final WebRequest request ) {
 		final StringBuilder builder = new StringBuilder();
 		builder.append(ex.getMethod());
-		builder.append(" method is not supported for this utility.request. Supported methods are ");
+		builder.append(" method is not supported for this request. Supported methods are ");
 		ex.getSupportedHttpMethods().forEach(t -> builder.append(t + " "));
 		final String error = builder.toString();
 		log.error(error);

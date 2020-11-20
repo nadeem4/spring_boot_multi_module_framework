@@ -10,7 +10,7 @@ Anyone can take this skeleton, and can start developing Microservice with Spring
 
 ## LIBRARIES
 - *api-docs*
-    - [documentation](#api-doc) 
+    - [documentation](#api-docs) 
     - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/api-docs)
 - *file-handler*
     - [documentation](#file-handler)
