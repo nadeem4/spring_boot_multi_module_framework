@@ -1,5 +1,7 @@
 # SPRING BOOT MULTI MODULE PROJECT
 
+> This project is still under development.
+
 This project aims to help the developer to start with spring boot multi-module project quickly. Logging, Exception handling, security are enabled by default.
 As of now logging and security module are strictly tied to Microsoft azure. All logs and exceptions are continuously tracked in Microsoft Application Insight.
 
@@ -27,7 +29,7 @@ Anyone can take this skeleton, and can start developing Microservice with Spring
     - [code](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/lib/utility)
 
 
-## How to create Microservice.
+## How to bootstrap new Microservice
 
 ## api-docs
 Add below dependency to pom.xml

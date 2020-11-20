@@ -13,21 +13,28 @@
     <artifactId>sample-service</artifactId>
 
     <dependencies>
+        <!-- Enables basic Swagger UI, by adding @EnableDocs annotation on Main Class. For Advance configuration, check README file -->
         <dependency>
             <groupId>com.app</groupId>
             <artifactId>api-docs</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- It contains security, logging and exception dependencies.-->
         <dependency>
             <groupId>com.app</groupId>
             <artifactId>backend-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- Check README file for details of this module. -->
         <dependency>
             <groupId>com.app</groupId>
             <artifactId>utility</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- Uncomment this section, if you want support for azure blob storage. Check README file for detail usage. -->
        <!-- <dependency>
             <groupId>com.app</groupId>
             <artifactId>file-handler</artifactId>
