@@ -40,7 +40,7 @@ public class AppControllerV1 {
         );
     }
 
-    @PostMapping(path = "/user")
+    @PostMapping(path = "/users")
     public ResponseEntity<ResponseDTO> setUsersDetail(@Valid @RequestBody ValidList<AppRequest> request) {
 
         return new ResponseEntity( ResponseDTO.setResponseDTO(
