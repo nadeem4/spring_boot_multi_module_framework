@@ -13,6 +13,7 @@
 		<module>lib/notification</module>
 		<module>lib/file-handler</module>
         <module>application/sample-service</module>
+		<module>application/sample-service-via-script</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

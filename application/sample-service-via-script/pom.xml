@@ -9,9 +9,9 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>sample-service</artifactId>
-
+ 
+    <artifactId>sample-service-via-script</artifactId>
+ 
     <dependencies>
         <!-- Enables basic Swagger UI, by adding @EnableDocs annotation on Main Class. For Advance configuration, check README file -->
         <dependency>
@@ -43,7 +43,7 @@
     </dependencies>
 
     <build>
-        <finalName>sample-service</finalName>
+    <finalName>sample-service-via-script</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

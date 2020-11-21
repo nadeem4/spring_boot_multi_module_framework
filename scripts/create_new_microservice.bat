@@ -1,24 +1,25 @@
 
 @echo off
-set /p name="Enter new Microservice name: "
+set /p name="(Please do not use spaces) Enter new Microservice name: "
+set /p base_package_name="(Please follow package naming convention) Enter new Base Package name: "
 set /p contact_name="(Contact Details ) Enter name: "
 set /p email="(Contact Details ) Enter email: "
 
 
-:: Creating folder structure till main 
-mkdir "../application/%name%/src/main/java"
-mkdir "../application/%name%/src/main/resources"
+:: Creating folder structure till main
+mkdir "./application/%name%/src/main/java"
+mkdir "./application/%name%/src/main/resources"
 
-mkdir "../application/%name%/src/main/java/%name%/controller/v1/api"
-mkdir "../application/%name%/src/main/java/%name%/controller/v1/mapper"
-mkdir "../application/%name%/src/main/java/%name%/controller/v1/request"
+mkdir "./application/%name%/src/main/java/%base_package_name%/controller/v1/api"
+mkdir "./application/%name%/src/main/java/%base_package_name%/controller/v1/mapper"
+mkdir "./application/%name%/src/main/java/%base_package_name%/controller/v1/request"
 
-mkdir "../application/%name%/src/main/java/%name%/dto/mapper"
-mkdir "../application/%name%/src/main/java/%name%/dto/model"
+mkdir "./application/%name%/src/main/java/%base_package_name%/dto/mapper"
+mkdir "./application/%name%/src/main/java/%base_package_name%/dto/model"
 
-mkdir "../application/%name%/src/main/java/%name%/model"
-mkdir "../application/%name%/src/main/java/%name%/repository"
-mkdir "../application/%name%/src/main/java/%name%/service"
+mkdir "./application/%name%/src/main/java/%base_package_name%/model"
+mkdir "./application/%name%/src/main/java/%base_package_name%/repository"
+mkdir "./application/%name%/src/main/java/%base_package_name%/service"
 
 
 
@@ -55,7 +56,7 @@ echo   security:
 echo     enabled: true
 echo   swagger:
 echo     enable-auth: false
-echo     title: Sample Service
+echo     title: %name%
 echo     desc: Helps to interact with Backend
 echo     version: v1
 echo     path-mapping: /
@@ -66,16 +67,16 @@ echo       url: ""
 echo     license: null
 echo     license-uri: null
 
-) > "../application/%name%/src/main/resources/application.yml" 
+) > "./application/%name%/src/main/resources/application.yml"
 
 :: Writing into resources bootstrap.yml  
-echo "" > "../application/%name%/src/main/resources/bootstrap.yml"
+echo "" > "./application/%name%/src/main/resources/bootstrap.yml"
 
 
 :: Writing into controller
 
 (
-echo package sample_service.controller.v1.api;
+echo package %base_package_name%.controller.v1.api;
 echo:
 echo import org.springframework.beans.factory.annotation.Autowired;
 echo import org.springframework.http.HttpStatus;
@@ -102,32 +103,9 @@ echo public class AppControllerV1 {
 echo:
 echo     @Autowired
 echo     private AppService service;
-echo:
-echo     @GetMapping^(path = "/greet"^)
-echo     public ResponseEntity^<String^> greetUser^( @NotNull @RequestParam String name^) {
-echo         return ResponseEntity.ok^(service.greetService^(name^)^);
-echo     }
-echo:
-echo     @PostMapping^(path = "/user"^)
-echo     public ResponseEntity^<ResponseDTO^> setUserDetail^(@Valid @RequestBody AppRequest request^) {
-echo         service.saveUser^(new AppDTOMapper^(^).convertToDTO^(request^)^);
-echo         return new ResponseEntity^( ResponseDTO.setResponseDTO^(
-echo                 Messages.setMessage^(EntityType.USER, ActionType.CREATED, String.valueOf^(request.getId^(^)^)^)^),
-echo                 HttpStatus.CREATED
-echo         ^);
-echo     }
-echo:
-echo     @PostMapping^(path = "/user"^)
-echo     public ResponseEntity^<ResponseDTO^> setUsersDetail^(@Valid @RequestBody ValidList^<AppRequest^> request^) {
-echo:
-echo         return new ResponseEntity^( ResponseDTO.setResponseDTO^(
-echo                 Messages.setMessage^(EntityType.USER, ActionType.CREATED, ""^)^),
-echo                 HttpStatus.CREATED
-echo         ^);
-echo     }
 echo }
 echo:
-) > "../application/%name%/src/main/java/%name%/controller/v1/api/AppControllerV1.java"
+) > "./application/%name%/src/main/java/%base_package_name%/controller/v1/api/AppControllerV1.java"
 
 
 
@@ -178,6 +156,7 @@ echo         ^</dependency^>--^>
 echo     ^</dependencies^>
 echo:
 echo     ^<build^>
+echo     ^<finalName^>%name%^</finalName^>
 echo         ^<plugins^>
 echo             ^<plugin^>
 echo                 ^<groupId^>org.springframework.boot^</groupId^>
@@ -192,33 +171,25 @@ echo         ^</plugins^>
 echo     ^</build^>
 echo:
 echo ^</project^>
-) > "../application/%name%/pom.xml"
+) > "./application/%name%/pom.xml"
 
 
 :: writing into DTO mapper  
 (
-echo package sample_service.dto.mapper;
+echo package %base_package_name%.dto.mapper;
 echo: 
 echo import logging.annotations.Loggable;
-echo import sample_service.dto.model.AppModelDTO;
 echo import sample_service.model.AppModel;
 echo: 
 echo public class AppModelMapper {
-echo: 
-echo     @Loggable^(valueAfter = "Value After", valueAfterReturning = "Value After Returning", valueAround = "Value Around", valueBefore = "Value Before"^)
-echo     public AppModel convertToModel^(AppModelDTO modelDTO^) {
-echo         AppModel model = new AppModel^(^);
-echo         model.setId^(modelDTO.getId^(^)^);
-echo         model.setName^(modelDTO.getName^(^)^);
-echo         return model;
-echo     }
+echo:
 echo }
 echo:
-) > "../application/%name%/src/main/java/%name%/controller/v1/mapper/AppModelMapper.java"
+) > "./application/%name%/src/main/java/%base_package_name%/controller/v1/mapper/AppModelMapper.java"
 
 :: writing into dto model 
 (
-echo package sample_service.dto.model;
+echo package %base_package_name%.dto.model;
 echo: 
 echo import lombok.Getter;
 echo import lombok.NoArgsConstructor;
@@ -228,18 +199,15 @@ echo @Setter
 echo @Getter
 echo @NoArgsConstructor
 echo public class AppModelDTO {
-echo: 
-echo     private Integer id;
-echo: 
-echo     private String name;
+echo:
 echo }
 echo:
-) > "../application/%name%/src/main/java/%name%/dto/model/AppModelDTO.java"
+) > "./application/%name%/src/main/java/%base_package_name%/dto/model/AppModelDTO.java"
 
 :: writing into model 
 
 (
-echo package sample_service.model;
+echo package %base_package_name%.model;
 echo: 
 echo import lombok.Getter;
 echo import lombok.NoArgsConstructor;
@@ -249,16 +217,13 @@ echo @Getter
 echo @Setter
 echo @NoArgsConstructor
 echo public class AppModel {
-echo     private Integer id;
-echo: 
-echo     private String name;
 echo }
 echo: 
-) > "../application/%name%/src/main/java/%name%/model/AppModel.java" 
+) > "./application/%name%/src/main/java/%base_package_name%/model/AppModel.java"
 
 :: writing into Repository 
 (
-echo package sample_service.repository;
+echo package %base_package_name%.repository;
 echo:
 echo import org.springframework.beans.factory.annotation.Autowired;
 echo import org.springframework.jdbc.core.JdbcTemplate;
@@ -279,20 +244,13 @@ echo:
 echo     @PostConstruct
 echo     public void init^(^) { jdbcTemplate.setResultsMapCaseInsensitive^(true^);}
 echo:
-echo     public String greetRepository^( String name ^) {
-echo         return name;
-echo     }
-echo:
-echo     public void saveUser^(AppModel model^) {
-echo:
-echo     }
 echo }
 echo:
-) > "../application/%name%/src/main/java/%name%/repository/AppRepository.java"
+) > "./application/%name%/src/main/java/%base_package_name%/repository/AppRepository.java"
 
 :: Writing into Service 
 (
-echo package sample_service.service;
+echo package %base_package_name%.service;
 
 echo import org.springframework.beans.factory.annotation.Autowired;
 echo import org.springframework.core.io.Resource;
@@ -309,36 +267,15 @@ echo:
 echo     @Autowired
 echo     private AppRepository repository;
 echo:
-echo     public String greetService^( String name ^) {
-echo         return repository.greetRepository^(name^);
-echo     }
-echo:
-echo     public void saveUser^(AppModelDTO model^) {
-echo: 
-echo     }
-echo /*
-echo     public ResponseEntity^<Resource^> download^(String url, String blobName^) {
-echo         return fileUtil.downloadBlob^(url, blobName^);
-echo     }
-echo: 
-echo     public void delete^(String url, String blobName^) {
-echo         fileUtil.deleteBlob^(url, blobName^);
-echo     }
-echo: 
-echo     public URI uploadBlob^(MultipartFile file, String blobName^) {
-echo         return fileUtil.uploadFile^(file, blobName^);
-echo     }
-echo: 
-echo */
 echo }
 
-) > "../application/%name%/src/main/java/%name%/service/AppService.java" 
+) > "./application/%name%/src/main/java/%base_package_name%/service/AppService.java"
 
 
 
 :: Writing into Application.java 
 (
-echo package sample_service;
+echo package %base_package_name%;
 echo:
 echo import apidocs.annotations.EnableDocs;
 echo import org.springframework.boot.SpringApplication;
@@ -351,11 +288,22 @@ echo public class Application {
 echo     public static void main^( String[] args ^) { SpringApplication.run^(Application.class, args^);}
 echo }
 echo:
-) > "../application/%name%/src/main/java/%name%/Application.java"
+) > "./application/%name%/src/main/java/%base_package_name%/Application.java"
 
 
+:: writing into Dockerfile
+(
+echo ## STAGE 1
+echo FROM maven:3.6.3-adoptopenjdk-11 AS MAVEN_BUILD
+echo COPY . /spring_multi_module_framework/
+echo WORKDIR /spring_multi_module_framework/
+echo RUN mvn package
+echo:
+echo ## STAGE 2
+echo FROM adoptopenjdk:11-jre-hotspot
+echo WORKDIR /app
+echo COPY --from=MAVEN_BUILD /spring_multi_module_framework/application/%name%/target/%base_package_name%.jar /app/
+echo ENTRYPOINT ["java", "-jar", "%base_package_name%.jar"]
 
-
-
-
+) > "./application/%name%/Dockerfile"
 
