@@ -1,0 +1,231 @@
+trigger:
+  branches:
+    include:
+      - dev
+      - release
+  paths:
+    include:
+      - spring_boot_multi_module_project/application/sample-service/*
+
+
+variables:
+  dockerRegistryServiceConnection: 'xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx'
+  imageRepository: 'sample-service'
+  containerRegistry: '<container_registry_name>'
+  dockerfilePath: '$(Build.SourcesDirectory)/spring_boot_multi_module_project/application/sample-service/Dockerfile'
+  tag: '$(Build.BuildId)'
+  helmVersionToInstall: '3.2.1'
+  connectionType: 'Azure Resource Manager'
+  azureSubscription: '<subscription_name>'
+  azureResourceGroup: '<resource_group_of_aks>'
+  kubernetesCluster: '<aks_name>'
+  chartPath: '$(Pipeline.Workspace)/chart/'
+  releaseName: 'ss'
+  vmImageName: 'ubuntu-latest'
+  buildContext: 'spring_boot_multi_module_project/'
+
+stages:
+  - stage: Build
+    displayName: Build and push stage
+    jobs:
+      - job: Build
+        displayName: Build
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - task: Docker@2
+            displayName: Build and push an image to container registry
+            inputs:
+              command: buildAndPush
+              repository: $(imageRepository)
+              dockerfile: $(dockerfilePath)
+              containerRegistry: $(containerRegistry)
+              buildContext: $(buildContext)
+              tags: |
+                $(tag)
+                latest
+          - task: CopyFiles@2
+            name: CopyChartToDrop
+            displayName: Copy Helm Chart to Drop Folder
+            inputs:
+              SourceFolder: 'spring_boot_multi_module_project/application/sample-service/sample-service/'
+              Contents: '**'
+              TargetFolder: 'drop'
+          - task: PublishBuildArtifacts@1
+            name: PublishDropFolder
+            displayName: Publish Drop Folder to Chart folder
+            inputs:
+              PathtoPublish: 'drop'
+              ArtifactName: 'chart'
+              publishLocation: 'Container'
+
+
+  - stage: DEV2
+    displayName: dev2
+    condition: and(succeeded(), in(variables['build.sourceBranchName'], 'dev') )
+    dependsOn:
+      - Build
+    jobs:
+      - job: InstallHelm
+        displayName: Install latest helm
+        steps:
+          - task: HelmInstaller@1
+            name: HelmInstall
+            displayName: Install helm version $(helmVersionToInstall)
+            inputs:
+              helmVersionToInstall: $(helmVersionToInstall)
+      - deployment: deployDev2ToAKS
+        displayName: Deploy dev2 profile
+        dependsOn:
+          - InstallHelm
+        condition: succeeded()
+        pool:
+          vmImage: $(vmImageName)
+        environment: dev2
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: HelmDeploy@0
+                  inputs:
+                    connectionType: 'Azure Resource Manager'
+                    azureSubscription: $(azureSubscription)
+                    azureResourceGroup: $(azureResourceGroup)
+                    kubernetesCluster: $(kubernetesCluster)
+                    useClusterAdmin: true
+                    namespace: 'dev2'
+                    command: 'upgrade'
+                    chartType: 'FilePath'
+                    chartPath: '$(chartPath)'
+                    releaseName: '$(releaseName)'
+                    overrideValues: 'image.tag=$(tag),namespace=dev2'
+                    valueFile: '$(Pipeline.Workspace)/chart/values-dev2.yaml'
+  - stage: DEV
+    displayName: dev
+    dependsOn:
+      - DEV2
+    condition: and(succeeded(), in(variables['build.sourceBranchName'], 'dev') )
+    jobs:
+      - job: InstallHelm
+        displayName: Install latest helm
+        steps:
+          - task: HelmInstaller@1
+            name: HelmInstall
+            displayName: Install helm version $(helmVersionToInstall)
+            inputs:
+              helmVersionToInstall: $(helmVersionToInstall)
+      - deployment: deployDevToAKS
+        displayName: Deploy dev profile
+        dependsOn:
+          - InstallHelm
+        condition: succeeded()
+        pool:
+          vmImage: $(vmImageName)
+        environment: dev
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: HelmDeploy@0
+                  name: HelmDeploy
+                  displayName: Install/ Upgrage helm release
+                  inputs:
+                    connectionType: 'Azure Resource Manager'
+                    azureSubscription: $(azureSubscription)
+                    azureResourceGroup: $(azureResourceGroup)
+                    kubernetesCluster: $(kubernetesCluster)
+                    useClusterAdmin: true
+                    namespace: 'dev'
+                    command: 'upgrade'
+                    chartType: 'FilePath'
+                    chartPath: $(chartPath)
+                    releaseName: $(releaseName)
+                    overrideValues: 'image.tag=$(tag),namespace=dev'
+                    valueFile: '$(Pipeline.Workspace)/chart/values-dev.yaml'
+
+
+  - stage: QA
+    displayName: qa
+    dependsOn:
+      - DEV
+    condition: in(dependencies.DEV.result, 'Succeeded', 'Skipped')
+    jobs:
+      - job: InstallHelm
+        displayName: Install latest helm
+        steps:
+          - task: HelmInstaller@1
+            name: HelmInstall
+            displayName: Install helm version $(helmVersionToInstall)
+            inputs:
+              helmVersionToInstall: $(helmVersionToInstall)
+      - deployment: deployQaToAKS
+        displayName: Deploy qa profile
+        dependsOn:
+          - InstallHelm
+        condition: succeeded()
+        pool:
+          vmImage: $(vmImageName)
+        environment: qa
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: HelmDeploy@0
+                  name: HelmDeploy
+                  displayName: Install/ Upgrage helm release
+                  inputs:
+                    connectionType: 'Azure Resource Manager'
+                    azureSubscription: $(azureSubscription)
+                    azureResourceGroup: $(azureResourceGroup)
+                    kubernetesCluster: $(kubernetesCluster)
+                    useClusterAdmin: true
+                    namespace: 'qa'
+                    command: 'upgrade'
+                    chartType: 'FilePath'
+                    chartPath: $(chartPath)
+                    releaseName: $(releaseName)
+                    overrideValues: 'image.tag=$(tag),namespace=qa'
+                    valueFile: '$(Pipeline.Workspace)/chart/values-qa.yaml'
+
+  - stage: PRESALES
+    displayName: presales
+    condition: in(dependencies.QA.result, 'Succeeded', 'Skipped')
+    dependsOn:
+      - QA
+    jobs:
+      - job: InstallHelm
+        displayName: Install latest helm
+        steps:
+          - task: HelmInstaller@1
+            name: HelmInstall
+            displayName: Install helm version $(helmVersionToInstall)
+            inputs:
+              helmVersionToInstall: $(helmVersionToInstall)
+      - deployment: deployPresalesToAKS
+        displayName: Deploy presales profile
+        dependsOn:
+          - InstallHelm
+        condition: succeeded()
+        pool:
+          vmImage: $(vmImageName)
+        environment: presales
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: HelmDeploy@0
+                  name: HelmDeploy
+                  displayName: Install/ Upgrage helm release
+                  inputs:
+                    connectionType: 'Azure Resource Manager'
+                    azureSubscription: $(azureSubscription)
+                    azureResourceGroup: $(azureResourceGroup)
+                    kubernetesCluster: $(kubernetesCluster)
+                    useClusterAdmin: true
+                    namespace: 'presales'
+                    command: 'upgrade'
+                    chartType: 'FilePath'
+                    chartPath: $(chartPath)
+                    releaseName: $(releaseName)
+                    overrideValues: 'image.tag=$(tag),namespace=presales'
+                    valueFile: '$(Pipeline.Workspace)/chart/values-presales.yaml'
