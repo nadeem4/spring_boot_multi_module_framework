@@ -31,7 +31,7 @@ Anyone can take this skeleton, and can start developing Microservice with Spring
 
 ## How to bootstrap new Microservice
 
-For Complete implementation, please check [sample-service](https://github.com/nadeem4/spring_boot_multi_module_framework).
+For Complete implementation, please check [sample-service](https://github.com/nadeem4/spring_boot_multi_module_framework/tree/main/application/sample-service).
 
 - __Step 1:__  *Clone this repository*
 
