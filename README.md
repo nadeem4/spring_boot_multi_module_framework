@@ -36,12 +36,15 @@ For Complete implementation, please check [sample-service](https://github.com/na
 - __Step 1:__  *Clone this repository*
 
 - __Step 2:__ *Load Parent pon.xml*
+
 ![load_parent_pom](./assets/images/load_parent_pom.png)
 
 - __Step 3:__ *Create Maven Module*
+
 ![create_maven_module](./assets/images/create_maven_module.png)
 
 - __Step 4:__ *Replace pom.xml content*
+
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -105,6 +108,7 @@ For Complete implementation, please check [sample-service](https://github.com/na
 </project>
 ```
 - __Step 5:__  *Add application.yaml file under resource folder*
+
 ```YAML
 spring:
   application:
@@ -152,6 +156,7 @@ app:
     license-uri: null
 ```
 - __Step 6:__ *Create Application.java class under root package*
+
 ```JAVA
 package sample_service;
 
@@ -167,6 +172,11 @@ public class Application {
     public static void main( String[] args ) { SpringApplication.run(Application.class, args);}
 }
 ```
+
+## Library Documentation
+
+This section explains the usage of different modules.
+
 ## api-docs
 Add below dependency to pom.xml
 ```xml
