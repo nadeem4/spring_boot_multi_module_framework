@@ -5,7 +5,7 @@ spring:
 
   security.oauth2.client.registration.azure:
     client-id: c29fa5aa-6518-45ce-ad32-52fbc4b18abf
-    client-secret: .ZzCkQGdO5l7M7O_Sv2CY1gXYrQy9g_Da.
+    client-secret: <client secret of server app>
     client-name: Azure
 
   datasource:
@@ -19,8 +19,8 @@ spring:
       auto-commit: true
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       jdbc-url: jdbc:sqlserver://localhost:1435;DatabaseName=practice
-      username: sa
-      password: N@d33^^kh9719
+      username: <your user name>
+      password: <your pass>
       leak-detection-threshold: 60000
 
 
@@ -31,9 +31,9 @@ azure:
   activedirectory:
     client-id: c29fa5aa-6518-45ce-ad32-52fbc4b18abf
     allow-telemetry: true
-    client-secret: .ZzCkQGdO5l7M7O_Sv2CY1gXYrQy9g_Da.
+    client-secret: <client secret of server app>
     user-group.allowed-groups: spring_boot_demo
-    tenant-id: b65cfeb1-39d7-4d00-8c4d-a82d599c5421
+    tenant-id: <tenant id>
 
 server:
   port: 8080
@@ -52,9 +52,9 @@ app:
     enable-auth: true
     oauth:
       client-id: 05a5d9a5-f2c3-4f4b-9ea6-5f35adc0b902
-      client-key: kT0_6A58.ncQ~HGfU_ZJ4BglXF_-Ym.f3R
+      client-key: <client secret of client app>
       resource: api://c29fa5aa-6518-45ce-ad32-52fbc4b18abf
-      login-endpoint: https://login.microsoftonline.com/b65cfeb1-39d7-4d00-8c4d-a82d599c5421/oauth2/authorize
+      login-endpoint: https://login.microsoftonline.com/<tenant id>/oauth2/authorize
     title: Sample Service With AAD Enabled
     desc: Helps to interact with Backend
     version: v1
