@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: sample-service-with-aad-auth
+  profiles.active: dev
+
+  security.oauth2.client.registration.azure:
+    client-id: c29fa5aa-6518-45ce-ad32-52fbc4b18abf
+    client-secret: .ZzCkQGdO5l7M7O_Sv2CY1gXYrQy9g_Da.
+    client-name: Azure
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: test
+    password: test
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+azure:
+  activedirectory:
+    client-id: c29fa5aa-6518-45ce-ad32-52fbc4b18abf
+    allow-telemetry: true
+    client-secret: .ZzCkQGdO5l7M7O_Sv2CY1gXYrQy9g_Da.
+    user-group.allowed-groups: spring_boot_demo
+    tenant-id: b65cfeb1-39d7-4d00-8c4d-a82d599c5421
+
+server:
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        secure: true
+
+app:
+  version: 1.0.0
+  security:
+    enabled: true
+
+  swagger:
+    enable-auth: true
+    oauth:
+      client-id: 05a5d9a5-f2c3-4f4b-9ea6-5f35adc0b902
+      client-key: kT0_6A58.ncQ~HGfU_ZJ4BglXF_-Ym.f3R
+      resource: api://c29fa5aa-6518-45ce-ad32-52fbc4b18abf
+      login-endpoint: https://sts.windows.net/b65cfeb1-39d7-4d00-8c4d-a82d599c5421/
+    title: Sample Service With AAD Enabled
+    desc: Helps to interact with Backend
+    version: v1
+    path-mapping: /
+    contact:
+      name: Backend Team
+      email: test@test.com
+      url: ""
+    license: null
+    license-uri: null
+
+
+
+

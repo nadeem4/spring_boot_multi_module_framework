@@ -14,4 +14,7 @@
     <root level="debug">
         <appender-ref ref="jsonConsoleAppender"/>
     </root>
+    <logger name="com.zaxxer.hikari" level="debug" additivity="false">
+        <appender-ref ref="jsonConsoleAppender"/>
+    </logger>
 </configuration>

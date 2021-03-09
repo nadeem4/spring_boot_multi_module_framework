@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,7 +35,7 @@ public class ServletExceptionHandler extends GenericFilterBean {
 	@Value("${app.version}")
 	private String version;
 	
-	@Value("${spring.profiles.active}")
+	@Value("${spring.profiles.active:dev}")
 	private String env;
 	
 	private List<String> excludedUrls = new ArrayList<>();
@@ -82,12 +83,10 @@ public class ServletExceptionHandler extends GenericFilterBean {
 	}
 	
 	private boolean isExcludedUrl(HttpServletRequest request ) {
-		excludedUrls.add("/swagger-ui");
-		excludedUrls.add("/v2/api-docs");
-		excludedUrls.add("/swagger-resources");
-		excludedUrls.add("/api/v1/negotiate");
-		excludedUrls.add("/api/v1/api/messages");
-		return excludedUrls.stream().anyMatch(s -> request.getRequestURI().contains(s));
+		return Arrays.stream(
+				"/swagger-ui,/v2/api-docs,/swagger-resources,/api/v1/negotiate,/api/v1/api/messages,/health"
+						.split(",")
+		).anyMatch(s -> request.getRequestURI().contains(s));
 	}
 	
 	private void setError( HttpServletResponse response , String errMsg) throws IOException {

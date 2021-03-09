@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  security.config.MDCLogConfig,\
+  security.aad.WebSecurityConfig

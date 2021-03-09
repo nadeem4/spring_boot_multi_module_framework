@@ -230,6 +230,7 @@ public class Application {
 
 ![swagger ui](./assets/images/swagger_ui.PNG)
 
+URL: http://localhost:8080/swagger-ui/index.html
 
 ## file-handler
 Exceptions will be automatically handled by Exception Module
