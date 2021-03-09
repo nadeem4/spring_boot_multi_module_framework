@@ -41,7 +41,14 @@
 			<artifactId>unirest-java</artifactId>
 			<version>${unirest.version}</version>
 		</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-jose -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+			<version>5.4.5</version>
+		</dependency>
+
 	</dependencies>
 	
 

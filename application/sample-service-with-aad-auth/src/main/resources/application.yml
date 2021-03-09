@@ -9,16 +9,23 @@ spring:
     client-name: Azure
 
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: test
-    password: test
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 1
+      maximum-pool-size: 10
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      auto-commit: true
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      jdbc-url: jdbc:sqlserver://localhost:1435;DatabaseName=practice
+      username: sa
+      password: N@d33^^kh9719
+      leak-detection-threshold: 60000
 
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
+
+
+
 
 azure:
   activedirectory:
@@ -47,7 +54,7 @@ app:
       client-id: 05a5d9a5-f2c3-4f4b-9ea6-5f35adc0b902
       client-key: kT0_6A58.ncQ~HGfU_ZJ4BglXF_-Ym.f3R
       resource: api://c29fa5aa-6518-45ce-ad32-52fbc4b18abf
-      login-endpoint: https://sts.windows.net/b65cfeb1-39d7-4d00-8c4d-a82d599c5421/
+      login-endpoint: https://login.microsoftonline.com/b65cfeb1-39d7-4d00-8c4d-a82d599c5421/oauth2/authorize
     title: Sample Service With AAD Enabled
     desc: Helps to interact with Backend
     version: v1

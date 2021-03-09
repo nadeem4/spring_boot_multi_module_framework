@@ -16,8 +16,6 @@ public class AppRepository {
 
     private SimpleJdbcCall simpleJdbcCall;
 
-    @PostConstruct
-    public void init() { jdbcTemplate.setResultsMapCaseInsensitive(true);}
 
     public String greetRepository( String name ) {
         return name;
