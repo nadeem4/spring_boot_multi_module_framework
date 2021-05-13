@@ -3,15 +3,12 @@ spring:
     name: sample-service
 
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: test
-    password: test
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: N@d33^^kh9719
+    url: jdbc:sqlserver://localhost:1433;DatabaseName=code_with_nk_db
+
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
@@ -43,6 +40,11 @@ app:
     license: null
     license-uri: null
 
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: debug
 
 
 

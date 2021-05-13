@@ -25,7 +25,6 @@ public class LoggableComponentAspect {
 		MDC.put("parameters",  Arrays.asList(joinPoint.getArgs()).stream().map(o -> {
 			try {return AppObjectMapper.convertObjectToJson(o);}
 			catch(Exception e) { return Arrays.toString(joinPoint.getArgs());}
-			finally { log.info(Arrays.toString(joinPoint.getArgs()));}
 		}).collect(Collectors.toList()));
 		MDC.put("target_class", joinPoint.getTarget().getClass().getName());
 		
@@ -68,7 +67,6 @@ public class LoggableComponentAspect {
 				MDC.put("response", Stream.of(response).map(o -> {
 					try {return AppObjectMapper.convertObjectToJson(o);}
 					catch(Exception e) { return response.toString();}
-					finally { log.info(AppObjectMapper.convertObjectToJson(response));}
 				}).collect(Collectors.toList()));
 				log.info("Return value of method: {} is {}", joinPoint.getSignature().getName(), MDC.get("response"));
 			} catch( Exception e) {
@@ -93,7 +91,6 @@ public class LoggableComponentAspect {
 		MDC.put("parameters", Arrays.asList(joinPoint.getArgs()).stream().map(o -> {
 			try {return AppObjectMapper.convertObjectToJson(o);}
 			catch (Exception e) { return Arrays.toString(joinPoint.getArgs()); }
-			finally { log.info(Arrays.toString(joinPoint.getArgs()));}
 		}).collect(Collectors.toList()));
 		
 		Map stackTraceMap = new HashMap();
