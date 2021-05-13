@@ -1,7 +1,7 @@
 package exception.handler;
 
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
+// import com.microsoft.sqlserver.jdbc.SQLServerException;
 import exception.custom.*;
 import exception.dto.ErrorDTO;
 import exception.dto.MultipleActionErrorDTO;
@@ -295,7 +295,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>(errorDTO, httpStatus);
 	}
 	
-	@ExceptionHandler ({ SQLServerException.class })
+/*	@ExceptionHandler ({ SQLServerException.class })
 	public ResponseEntity<Object> handleSQLServerException( final SQLServerException ex, final WebRequest request ) {
 		String error;
 		if( ex.getCause() != null) {
@@ -313,7 +313,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		MDC.remove("ex");
 		ErrorDTO errorDTO = setErrorDTO(error, HttpStatus.BAD_REQUEST);
 		return new ResponseEntity<>(errorDTO, HttpStatus.BAD_REQUEST);
-	}
+	}*/
 	
 	@ExceptionHandler ({ ConstraintViolationException.class })
 	public ResponseEntity<Object> handleConstraintViolation( final ConstraintViolationException ex) {

@@ -17,10 +17,6 @@
 	<dependencies>
 		<!-- provide facility to send logs to application insight -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-sleuth</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.microsoft.azure</groupId>
 			<artifactId>applicationinsights-spring-boot-starter</artifactId>
 			<version>${ai-spring-boot-starter.version}</version>
@@ -32,21 +28,6 @@
 		</dependency>
 		
 		<!-- helps in remodelling of logs -->
-		<dependency>
-			<groupId>net.logstash.logback</groupId>
-			<artifactId>logstash-logback-encoder</artifactId>
-			<version>${logstash.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.skjolber.logback-logstash-syntax-highlighting-decorators</groupId>
-			<artifactId>logback-logstash-syntax-highlighting-decorators</artifactId>
-			<version>${syntax-highlighter.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.fusesource.jansi</groupId>
-			<artifactId>jansi</artifactId>
-			<version>${jansi.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>com.app</groupId>
 			<artifactId>utility</artifactId>
