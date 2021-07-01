@@ -10,9 +10,12 @@ import sample_service.model.AppModel;
 @Repository
 public class AppRepository {
 
-    @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    AppRepository(JdbcTemplate template) {
+        jdbcTemplate = template;
+    }
     // private SimpleJdbcCall simpleJdbcCall;
 
 
