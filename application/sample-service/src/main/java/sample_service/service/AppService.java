@@ -25,9 +25,7 @@ public class AppService {
         return repository.greetRepository(name);
     }
 
-    public void saveUser(AppModelDTO model) {
-
-    }
+    public void saveUser(AppModelDTO model) { }
 /*
     public ResponseEntity<Resource> download(String url, String blobName) {
         return fileUtil.downloadBlob(url, blobName);
